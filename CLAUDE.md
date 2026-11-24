@@ -114,7 +114,8 @@ SET SERVEROUTPUT ON;
 - Palavras-chave SQL/PL-SQL em maiúsculas; nomes de tabelas em maiúsculas como no enunciado
 - Cada `CREATE PROCEDURE / FUNCTION / TRIGGER / PACKAGE` e cada bloco anónimo termina com `/` numa linha sozinha
 - Usar `CREATE OR REPLACE` para poder correr o ficheiro várias vezes
-- Comentar as decisões não óbvias (ex. tratamento de NULL), não o óbvio
+- **Comentários curtos e objetivos, sem palha:** uma linha por secção a dizer o quê (e o porquê só se não for óbvio). Ex.: `-- 2. CÓPIA DE PROCEDIMENTO (+ PK, que o AS SELECT não copia)`. Nada de parágrafos, nem de repetir o que o código já diz
+- As explicações longas ficam **na conversa**, não no código
 - Secção final `-- TESTES` com: o que se testa, a chamada, e `-- Esperado: ...`
 - Testes que alteram dados terminam com `ROLLBACK;` (exceto quando o objetivo é mostrar o efeito persistente)
 
