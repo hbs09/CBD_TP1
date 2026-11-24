@@ -119,6 +119,8 @@ Peso estimado (1–5): setup 1 · 1a 3 · 1b 4 · 2a 2 · 2b 2 · 3a 4 · 3b 3 �
 ```
 CBD_TP1/
 ├── README.md
+├── CLAUDE.md                      regras partilhadas para os assistentes (Claude)
+├── contexto/                      contexto de cada pessoa para o seu Claude
 ├── planos/                        plano de cada pessoa
 ├── enunciado/                     PDFs do enunciado e dicionário de dados
 ├── sql/
@@ -131,6 +133,17 @@ CBD_TP1/
 │   └── 03b_trigger_grupo.sql      Henrique
 └── entrega/                       ficheiro final para o Moodle
 ```
+
+## Usar o Claude no trabalho
+
+Para os três Claudes seguirem as mesmas regras (professor, PL/SQL permitido, convenções, commits):
+
+- **Claude Code** (na pasta do repositório): o `CLAUDE.md` é lido automaticamente. No início, diz-lhe *"Sou o David, lê `contexto/David.md` e `planos/David.md`"*.
+- **claude.ai** (chat): cria um Projeto e adiciona `CLAUDE.md`, `contexto/<Nome>.md`, `planos/<Nome>.md` e os dois PDFs do enunciado.
+
+Quando o `CLAUDE.md` ou o teu `contexto/` mudar, atualiza-o no teu Projeto.
+
+**Mensagens de commit:** `[ex] tipo: descrição` — ex. `[1a] feat: cursor de entidades com INSTR`. Tipos: `feat`, `fix`, `test`, `refactor`, `docs` (detalhes no `CLAUDE.md`, secção 7).
 
 ## Como trabalhar (GitHub Desktop + SQL Developer)
 
