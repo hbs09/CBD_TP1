@@ -13,7 +13,34 @@ Guia para pôr tudo a funcionar no teu computador: repositório, SQL Developer, 
 
 ---
 
-## 2. Onde estão as tabelas
+## 2. Criar a ligação certa no SQL Developer (uma vez)
+
+⚠️ A BD do TP1 está no servidor **`bds0`** — ligações ao `bds1` não a veem.
+
+**File → New → Database Connection** (ou o **+** verde no painel Connections):
+
+| Campo | Valor |
+|---|---|
+| Name | à escolha (ex. `tp1_cbd`) |
+| Username | a tua conta: `C##_INF_<número>` ou `C##_IM_<número>` |
+| Password | a tua password (marca **Save Password**) |
+| Hostname | `bds0.est.ipcb.pt` |
+| Port | `1521` |
+| SID | `xe` |
+
+**Test** → **Save** → **Connect**.
+
+**Confirmar que é a ligação certa** — numa folha SQL dessa ligação, **Ctrl+Enter**:
+```sql
+SELECT COUNT(*) FROM C##_TP1_2627.CONTRATO;
+```
+Tem de dar **4999**. Se der **ORA-00942** (tabela não existe), estás no servidor errado.
+
+> Não vês o painel **Connections**? Menu **View → Connections**.
+
+---
+
+## 3. Onde estão as tabelas
 
 A base de dados do professor está no utilizador **`C##_TP1_2627`** e é **só de leitura** (podes consultar, não podes alterar).
 
@@ -49,11 +76,11 @@ O significado de cada coluna está no [dicionário de dados](enunciado/Dicionari
 | `C##_TP1_2627.CONTRATO` (do professor) | **Other Users → C##_TP1_2627 → Tables** | Ler dados (Ex. 1) |
 | `CONTRATO` (cópia nossa) | **A tua ligação → Tables** | Triggers e alterações (Ex. 2 e 3) |
 
-As cópias só aparecem **depois de correres o `00_setup.sql`** (ver ponto 4). Depois de correr, clica no botão de **refresh** (seta circular) em **Tables**.
+As cópias só aparecem **depois de correres o `00_setup.sql`** (ver ponto 5). Depois de correr, clica no botão de **refresh** (seta circular) em **Tables**.
 
 ---
 
-## 3. Como correr código no SQL Developer
+## 4. Como correr código no SQL Developer
 
 | Tecla | O que faz | Quando usar |
 |---|---|---|
@@ -70,7 +97,7 @@ As cópias só aparecem **depois de correres o `00_setup.sql`** (ver ponto 4). D
 
 ---
 
-## 4. Correr o setup (uma vez, e de novo quando mudar)
+## 5. Correr o setup (uma vez, e de novo quando mudar)
 
 1. GitHub Desktop → **Fetch origin** / **Pull origin**
 2. No SQL Developer: **File → Open** → `sql/00_setup.sql`
@@ -84,10 +111,10 @@ As cópias só aparecem **depois de correres o `00_setup.sql`** (ver ponto 4). D
 
 ---
 
-## 5. Rotina de cada sessão de trabalho
+## 6. Rotina de cada sessão de trabalho
 
 1. **GitHub Desktop → Fetch origin / Pull origin**
-2. Se o setup mudou → correr o setup (ponto 4)
+2. Se o setup mudou → correr o setup (ponto 5)
 3. Abrir o **teu** ficheiro no SQL Developer
 4. Trabalhar com o Claude (ele envia o código passo a passo; tu copias; dizes **"feito"**)
 5. **Ctrl+S** → GitHub Desktop → **Commit to main** → **Push origin**

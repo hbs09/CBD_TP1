@@ -89,6 +89,10 @@ Fonte: slides `CBD_cap_21`, `CBD_cap_22`, `cap23` e fichas `CBD_pcap21`–`CBD_p
 - `LOCAL_EXECUCAO.descricao` = "Portugal, Distrito, Concelho", **com detalhe variável** (pode ter só "Portugal" ou "Portugal, Distrito")
 - A soma de `CONTRATO_CPV.valor` **não** coincide com `preco_contratual`
 - `ENTIDADE.identificador_fiscal`, `codigo_pais`, `codigo_nuts`, `pme` aceitam NULL
+- **Tipos confirmados (`DESC`):**
+  - `CONTRATO`: `id_contrato NUMBER(38)`, `id_procedimento NUMBER(38)`, `objeto VARCHAR2(2048)`, `data_publicacao DATE`, `data_celebracao DATE` (aceita NULL), `preco_contratual NUMBER(38,2)`, `prazo_execucao NUMBER(38)`, `ecologico CHAR(1)` (aceita NULL) — tudo o resto é `NOT NULL`
+  - `PROCEDIMENTO`: `id_procedimento NUMBER(38)`, `id_tipo_procedimento NUMBER(38)` (ambos `NOT NULL`), `centralizado CHAR(1)`, `compra_conjunta CHAR(1)`
+  - Consequência: `id_procedimento` e `preco_contratual` **nunca são NULL** → no 2a e no 2b não é preciso tratar NULL nestas colunas
 - Campos S/N: `ecologico`, `centralizado`, `compra_conjunta`, `pme`
 - Ex. 1 **lê** de `C##_TP1_2627.*`; Ex. 2 e 3 **escrevem** nas cópias locais (`CONTRATO`, `PROCEDIMENTO`, …)
 - **Nunca inventar colunas.** Se tiveres dúvidas sobre um tipo ou nome, pede ao aluno para correr `DESC C##_TP1_2627.<TABELA>` e colar o resultado

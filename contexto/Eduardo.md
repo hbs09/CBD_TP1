@@ -27,7 +27,7 @@ Não edita mais nenhum ficheiro. Tabelas novas para o Ex. 3 são desenhadas com 
 - **O 3b do Henrique depende do 3a:** a especificação do pacote (nomes, parâmetros, retornos) tem de estar fechada cedo. Mudanças na especificação → avisar o Henrique
 
 ## Particularidades a lembrar
-- **2b — "efetivamente alterado":** `:OLD.preco_contratual <> :NEW.preco_contratual` falha quando um dos lados é NULL. Cobrir: valor→outro, NULL→valor, valor→NULL; ignorar valor→mesmo valor
+- **2b — "efetivamente alterado":** `preco_contratual` é `NOT NULL` (`NUMBER(38,2)`, confirmado com `DESC`), por isso basta `:OLD.preco_contratual <> :NEW.preco_contratual`. Um `UPDATE` com o mesmo preço **não** regista nada
 - **2b — delete:** registar com `novo_preco = NULL` e o objeto **anterior** (`:OLD.objeto`)
 - O 2a do Henrique também tem trigger em `CONTRATO` → testar juntos um `DELETE`
 - **3a:** a complexidade é valorizada → pacote com especificação + corpo, subprogramas privados, cursores (com parâmetros), exceção definida pelo utilizador, validação de parâmetros

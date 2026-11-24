@@ -25,7 +25,7 @@ Trigger de linha sobre a cópia de `CONTRATO`, `AFTER UPDATE OF preco_contratual
 - **DELETE** → mesmo registo mas com `novo_preco = NULL`
 
 ### Armadilhas
-- **"Efetivamente alterado" com NULL:** `:OLD.p <> :NEW.p` é *falso/desconhecido* se algum for NULL. A condição tem de cobrir: valor→outro valor, NULL→valor, valor→NULL — e **não** registar valor→mesmo valor
+- **"Efetivamente alterado":** `preco_contratual` é `NOT NULL` (confirmado com `DESC`), por isso basta comparar `:OLD.preco_contratual <> :NEW.preco_contratual` — não é preciso tratar NULL no UPDATE
 - `UPDATE OF preco_contratual` dispara mesmo que o valor seja igual (`SET preco = preco`) — por isso a comparação acima é obrigatória
 - O objeto a guardar é o **anterior** (`:OLD.objeto`)
 - O 2a do Henrique também tem trigger em `CONTRATO` — testem juntos um `DELETE` (devem disparar os dois sem conflito)
@@ -53,7 +53,7 @@ Inspirada na regra do Código dos Contratos Públicos que limita ajustes diretos
   - procedimento `Relatorio_Concentracao(adjudicante)` → lista as empresas mais contratadas, com % do total
   - procedimento `Gerar_Alertas` → percorre os pares e regista em `ALERTA` os que passam o limite
   - exceção própria para parâmetros inválidos
-- **3b — trigger (Henrique):** ao inserir um contrato por ajuste direto, calcula o acumulado (chamando a função do pacote) e regista um alerta ou bloqueia com `RAISE_APPLICATION_ERROR`
+- **3b — trigger (Henrique):** sobre `CONTRATO_ENTIDADE` — ao associar um adjudicatário a um contrato por ajuste direto, calcula o acumulado (chamando a função do pacote, que lê `CONTRATO` sem problemas de tabela mutante) e regista um alerta ou bloqueia com `RAISE_APPLICATION_ERROR`
 
 **B) Estatísticas por região e CPV**
 - Pacote com rankings de valor por NUTS / distrito / código CPV, comparação entre regiões, contratos ecológicos vs não ecológicos

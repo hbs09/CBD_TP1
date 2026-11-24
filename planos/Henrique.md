@@ -23,8 +23,8 @@
 4. **Tabelas auxiliares** (colunas exatamente como no enunciado):
    - `RESULTADO_LOCALIZACAO (id_contrato, objeto, pais, distrito, concelho, preco_contratual)` — usada pelo David
    - `REGISTA_ALTERACOES_PRECOS (id_contrato, objeto, preco_antigo, novo_preco, data_alteracao)` — usada pelo Eduardo
-   - Dica: para herdar os tipos certos de `id_contrato`, `objeto` e `preco_contratual`, podes criar com `CREATE TABLE ... AS SELECT ... FROM C##_TP1_2627.contrato WHERE 1=0`
-   - ⚠️ `novo_preco` **tem de aceitar NULL** (o delete do 2b regista NULL)
+   - Tipos (confirmados com `DESC`): `id_contrato NUMBER(38)`, `objeto VARCHAR2(2048)`, preços `NUMBER(38,2)`
+   - ⚠️ `novo_preco` **tem de aceitar NULL** (o delete do 2b regista NULL) → sem `NOT NULL`
 
 ### Verificar antes do push
 - [ ] O script corre duas vezes seguidas sem erros (fora os DROP da 1.ª vez)
@@ -45,8 +45,7 @@ Trigger de linha (`FOR EACH ROW`) sobre a tua cópia de `CONTRATO`, `AFTER INSER
 O enunciado fala em "variantes": podes fazer **um trigger com `INSERTING/DELETING/UPDATING`** ou **três triggers**. Vê na ficha `CBD_pcap24` qual o estilo dado nas aulas.
 
 ### Armadilhas
-- `id_procedimento` pode ser NULL → não atualizar nada nesse caso
-- Comparar "mudou" com NULL: `:OLD.x <> :NEW.x` não apanha NULL ↔ valor
+- `id_procedimento` é `NOT NULL` (confirmado com `DESC`) → um contrato tem sempre procedimento; basta comparar `:OLD.id_procedimento <> :NEW.id_procedimento`
 - O 2b (Eduardo) também tem triggers em `CONTRATO` — testem juntos que não interferem
 
 ### Testes (no fim do ficheiro)
