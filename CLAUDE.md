@@ -28,6 +28,7 @@ O grupo aprende **escrevendo o código à mão**. Por isso:
 - **Enunciado:** `enunciado/TP1_CBD_FREQ.pdf` · **Dicionário de dados:** `enunciado/Dicionario_Dados_Contratos.pdf`
 - **Entrega:** um único `.sql` no Moodle até **4/dez às 23:59** · prazo interno do grupo: **2/dez**
 - **Ferramentas:** Oracle + SQL Developer · GitHub Desktop · repositório `hbs09/CBD_TP1`
+- **Guia de arranque:** `PRIMEIROS_PASSOS.md` — onde estão as tabelas (Other Users → C##_TP1_2627), Ctrl+Enter vs F5, `DBMS_OUTPUT`, como correr o setup. Quando o aluno tiver dúvidas destas, explica e indica este guia
 - **Língua:** responder sempre em **português de Portugal**; comentários no código também em português
 
 ## 2. Equipa e responsabilidades

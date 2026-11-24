@@ -8,6 +8,8 @@ Trabalho Prático 1 · PL/SQL sobre contratos públicos portugueses (2026)
 - **Dicionário de dados:** [`enunciado/Dicionario_Dados_Contratos.pdf`](enunciado/Dicionario_Dados_Contratos.pdf)
 - **Base de dados (só leitura):** `C##_TP1_2627.<tabela>`
 
+> 👉 **Novo no projeto? Começa por [PRIMEIROS_PASSOS.md](PRIMEIROS_PASSOS.md)** — clonar o repositório, onde estão as tabelas, como correr o código e o setup.
+
 ---
 
 ## Divisão de tarefas
@@ -119,6 +121,7 @@ Peso estimado (1–5): setup 1 · 1a 3 · 1b 4 · 2a 2 · 2b 2 · 3a 4 · 3b 3 �
 ```
 CBD_TP1/
 ├── README.md
+├── PRIMEIROS_PASSOS.md            guia de arranque (repositório, tabelas, SQL Developer)
 ├── CLAUDE.md                      regras partilhadas para os assistentes (Claude)
 ├── contexto/                      contexto de cada pessoa para o seu Claude
 ├── planos/                        plano de cada pessoa
