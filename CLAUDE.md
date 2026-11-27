@@ -18,6 +18,7 @@ O grupo aprende **escrevendo o código à mão**. Por isso:
    - Se o aluno colar um erro ou output, resolve isso **antes** de avançar.
 5. **Guia o Git** em todos os momentos certos (início da sessão, depois de um "feito" que funciona, fim da sessão) — ver secção 7.
 6. Ficheiros de documentação (`README.md`, `planos/`, `contexto/`) também não são editados pelo Claude, a menos que o aluno o peça explicitamente.
+7. **Ao começar um exercício**, mostra primeiro o **texto do enunciado** desse exercício (tal como está no `TP1_CBD_FREQ.pdf`) e uma tabela curta *"o professor diz → onde fica resolvido no código"*. Só depois envias o Passo 1.
 
 ---
 
@@ -67,12 +68,15 @@ Fonte: slides `CBD_cap_21`, `CBD_cap_22`, `cap23` e fichas `CBD_pcap21`–`CBD_p
 - Procedimentos com parâmetros `IN`, `OUT`, `IN OUT`; funções com `RETURN`
 - Pacotes: especificação (`CREATE PACKAGE`) + corpo (`CREATE PACKAGE BODY`), subprogramas **privados** e públicos, overloading
 - Triggers: `BEFORE / AFTER`, `INSERT OR UPDATE OR DELETE`, `UPDATE OF coluna`, `FOR EACH ROW` / `STATEMENT`, `WHEN (condição)`, `:NEW` / `:OLD`, `ALTER TRIGGER ... ENABLE/DISABLE`, `DROP TRIGGER`
-- Tabela mutante: o professor resolveu com `PRAGMA AUTONOMOUS_TRANSACTION` (só para `SELECT`, com cuidado — ver `cap23`)
+- `CASE` (com e sem seletor, `CASE_NOT_FOUND`) — `cap21`
+- `COMMIT`, `ROLLBACK`, `SAVEPOINT` — `cap21`
+- Tabela mutante (`ORA-04091`): o professor mostra `PRAGMA AUTONOMOUS_TRANSACTION`, **mas avisa que tem problemas** (o commit autónomo limita o rollback da sessão original; o trigger não vê a linha nova). **Regra do grupo: desenhar os triggers para não consultarem a própria tabela** (trigger numa tabela, consultas noutras — como no exemplo das receitas do `cap23`), ou usar trigger por instrução (`FOR EACH STATEMENT`). `AUTONOMOUS_TRANSACTION` só em último recurso e justificado em comentário
 - Funções SQL vistas: `NVL`, `UPPER`, `INSTR`, `SUBSTR`, `TO_CHAR`, `RTRIM`, `ROUND`, `EXTRACT`, `SYSDATE`, `COUNT/SUM/MAX`, `GROUP BY / HAVING`
 
-**⚠️ Confirmar nos slides antes de usar** (não encontrados nos materiais)
-- `INSERTING / UPDATING / DELETING` dentro do trigger → se não estiver nos slides, usar **triggers separados** por evento
-- `CASE`, `TRIM`, `LTRIM`
+**⚠️ Não encontrados nos materiais**
+- `INSERTING / UPDATING / DELETING` → **não aparecem nos slides**: usar **triggers separados** por evento, como no exercício das receitas do `cap23` (é o que o 2a faz: `ActualizaTotalContratos`, `_DEL`, `_UPD`)
+- `TRIM`, `LTRIM` → funções SQL básicas; preferir `RTRIM` (está nos slides) quando chegar
+- Operador `<>` ("diferente") → não aparece nos exemplos, mas é SQL standard (não é elemento de PL/SQL); pode usar-se
 
 **❌ Não usar** (não dados nas aulas — o professor não os considera)
 - `EXECUTE IMMEDIATE` / SQL dinâmico, `BULK COLLECT`, `FORALL`, coleções (`TABLE OF`, `VARRAY`), `REF CURSOR`, `SYS_REFCURSOR`

@@ -34,7 +34,9 @@ Sempre que o setup mudar: commit `[setup] ...` + avisar o grupo para voltarem a 
 ## Particularidades a lembrar
 - O setup tem de poder correr várias vezes (DROP no início; erros de "não existe" na 1.ª vez são aceitáveis)
 - 2a e 2b têm triggers na mesma tabela `CONTRATO` → testar juntos um `DELETE`
-- No 3b, cuidado com a **tabela mutante** se o trigger consultar a própria tabela (o professor resolve com `PRAGMA AUTONOMOUS_TRANSACTION`; melhor ainda é desenhar o trigger noutra tabela, ex. `CONTRATO_ENTIDADE`)
+- Ex. 2a ✅ concluído (27/nov): 3 triggers separados (`ActualizaTotalContratos`, `_DEL`, `_UPD` com `WHEN`) + testes
+- Ex. 3: ideia **A — ajustes diretos** (ver `planos/Eduardo.md`, secção 2)
+- No 3b, **evitar a tabela mutante por desenho**: o trigger não consulta a tabela onde está. O professor mostra `PRAGMA AUTONOMOUS_TRANSACTION`, mas avisa que tem problemas — só em último recurso
 - Na junção: ordem `00 → 01a → 01b → 02a → 02b → 03a → 03b`; confirmar `/` após cada objeto; correr tudo num utilizador limpo
 
 ## Papel extra do Claude do Henrique

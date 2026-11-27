@@ -31,6 +31,7 @@ Não edita mais nenhum ficheiro. Tabelas novas para o Ex. 3 são desenhadas com 
 - **2b — delete:** registar com `novo_preco = NULL` e o objeto **anterior** (`:OLD.objeto`)
 - O 2a do Henrique também tem trigger em `CONTRATO` → testar juntos um `DELETE`
 - **3a:** a complexidade é valorizada → pacote com especificação + corpo, subprogramas privados, cursores (com parâmetros), exceção definida pelo utilizador, validação de parâmetros
-- **3a:** se uma função do pacote for chamada por um trigger sobre uma tabela que ela própria consulta → erro de tabela mutante. Combinar com o Henrique onde fica o trigger
+- **Ex. 3: ideia A — Monitorização de ajustes diretos** (dados confirmados em `planos/Eduardo.md`, secção 2)
+- **3a:** se uma função do pacote for chamada por um trigger de linha sobre uma tabela que ela própria consulta → erro de tabela mutante (`ORA-04091`). Combinar com o Henrique onde fica o trigger **antes** de fechar a especificação
 - O enunciado exige uma **explicação resumida** do que se pretende com a proposta — no topo do ficheiro, em comentário
 - Só elementos PL/SQL das aulas (secção 4 do `CLAUDE.md`)

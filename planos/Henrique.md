@@ -59,8 +59,8 @@ O enunciado fala em "variantes": podes fazer **um trigger com `INSERTING/DELETIN
 
 ## 3. Ex. 3b — Trigger do grupo · 28–30/nov
 
-1. **26/nov:** reunião dos três para decidir a ideia do Ex. 3 (ver sugestões em [Eduardo.md](Eduardo.md#ideias-para-o-ex-3))
-2. **28/nov:** desenhar com o Eduardo as tabelas extra → acrescentar ao `00_setup.sql` (secção `-- EX. 3`) → push
+1. ✅ **27/nov:** ideia **A — Monitorização de ajustes diretos** escolhida e validada com dados reais (detalhes em [Eduardo.md](Eduardo.md#2-ex-3--decisão-em-grupo--26nov)). Falta confirmação do David e do Eduardo
+2. **28/nov:** desenhar com o Eduardo as tabelas extra e **onde fica o trigger** (evitar tabela mutante: o trigger não pode consultar a tabela onde está) → acrescentar as tabelas ao `00_setup.sql` (secção `-- EX. 3`) → push
 3. **29–30/nov:** escrever o trigger
    - Para valorizar a complexidade: regra de negócio real, consulta a outras tabelas, `RAISE_APPLICATION_ERROR` quando a regra é violada, registo numa tabela de log/alertas
    - Se fizer sentido, o trigger **chama** funções do pacote do Eduardo (mostra integração)
